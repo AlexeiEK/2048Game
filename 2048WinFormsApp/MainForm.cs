@@ -1,5 +1,6 @@
 using Microsoft.VisualBasic.ApplicationServices;
 using Newtonsoft.Json;
+using System.Windows.Forms;
 using static System.Formats.Asn1.AsnWriter;
 
 namespace _2048WinFormsApp
@@ -13,6 +14,10 @@ namespace _2048WinFormsApp
         private int score = 0;
         private int hiScore = GetHiScore(pathFile);
         private User user = new User();
+        private const int labelSize = 70;
+        private const int padding = 6;
+        private const int startX = 10;
+        private const int startY = 70;
 
         public MainForm()
         {
@@ -60,7 +65,7 @@ namespace _2048WinFormsApp
 
         private void InitMap()
         {
-            ClientSize = new Size(12 + 76 * mapSize, 105 + 70 * mapSize);
+            ClientSize = new Size(startX + (labelSize + padding) * mapSize, startY + (labelSize + padding) * mapSize);
             labelsMap = new Label[mapSize, mapSize];
             for (int i = 0; i < mapSize; i++)
             {
@@ -101,11 +106,11 @@ namespace _2048WinFormsApp
         {
             var label = new Label();
             label.BackColor = SystemColors.ButtonShadow;
-            label.Size = new Size(70, 70);
+            label.Size = new Size(labelSize, labelSize);
             label.TextAlign = ContentAlignment.MiddleCenter;
             label.Font = new Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            var x = 10 + indexColumn * 76;
-            var y = 70 + indexRow * 76;
+            var x = startX + indexColumn * (labelSize + padding);
+            var y = startY + indexRow * (labelSize + padding);
             label.Location = new Point(x, y);
             return label;
         }
