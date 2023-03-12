@@ -2,9 +2,14 @@
 {
     public partial class GreetingsForm : Form
     {
+        public List<RadioButton> radioButtons;
         public GreetingsForm()
         {
             InitializeComponent();
+            radioButtons = new List<RadioButton>
+            {
+           radioButton1, radioButton2, radioButton3, radioButton4
+            };
         }
         private void startGameButton_Click(object sender, EventArgs e)
         {

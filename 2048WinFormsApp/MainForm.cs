@@ -7,7 +7,7 @@ namespace _2048WinFormsApp
     public partial class MainForm : Form
     {
         private Label[,] labelsMap;
-        private const int mapSize = 4;
+        private int mapSize = 4;
         private static Random random = new Random();
         private static string pathFile = "hiScore.json";
         private int score = 0;
@@ -25,9 +25,22 @@ namespace _2048WinFormsApp
             greetingsForm.ShowDialog();
             user.Name = greetingsForm.userNameTextBox.Text;
 
+            CalculateMapSize(greetingsForm.radioButtons);
             InitMap();
             GenerateNumber();
             ShowScore();
+        }
+
+        private void CalculateMapSize(List<RadioButton> radioButtons)
+        {
+            foreach (RadioButton radioButton in radioButtons)
+            {
+                if (radioButton.Checked)
+                {
+                    mapSize = Convert.ToInt32(radioButton.Text[0].ToString());
+                    break;
+                }
+            }
         }
         private void ShowScore()
         {
@@ -47,6 +60,7 @@ namespace _2048WinFormsApp
 
         private void InitMap()
         {
+            ClientSize = new Size(12 + 76 * mapSize, 105 + 70 * mapSize);
             labelsMap = new Label[mapSize, mapSize];
             for (int i = 0; i < mapSize; i++)
             {
@@ -118,6 +132,7 @@ namespace _2048WinFormsApp
             {
                 KeyProcessingDown();
             }
+            GenerateNumber();
             ShowScore();
 
             if (Win())
@@ -184,7 +199,6 @@ namespace _2048WinFormsApp
                     }
                 }
             }
-            GenerateNumber();
         }
 
         private void KeyProcessingUp()
@@ -234,7 +248,6 @@ namespace _2048WinFormsApp
                     }
                 }
             }
-            GenerateNumber();
         }
 
         private void KeyProcessingLeft()
@@ -285,7 +298,6 @@ namespace _2048WinFormsApp
                     }
                 }
             }
-            GenerateNumber();
         }
 
         private void KeyProcessingRight()
@@ -335,7 +347,6 @@ namespace _2048WinFormsApp
                     }
                 }
             }
-            GenerateNumber();
         }
 
         private bool EndGame()
