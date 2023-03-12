@@ -418,5 +418,11 @@ namespace _2048WinFormsApp
         {
             Application.Restart();
         }
+
+        private void ğåçóëüòàòûÈãğûToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var resultsForm = new ResultsForm();
+            resultsForm.ShowDialog();
+        }
     }
 }

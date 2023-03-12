@@ -83,6 +83,7 @@
             результатыИгрыToolStripMenuItem.Name = "результатыИгрыToolStripMenuItem";
             результатыИгрыToolStripMenuItem.Size = new Size(112, 20);
             результатыИгрыToolStripMenuItem.Text = "Результаты игры";
+            результатыИгрыToolStripMenuItem.Click += результатыИгрыToolStripMenuItem_Click;
             // 
             // label1
             // 

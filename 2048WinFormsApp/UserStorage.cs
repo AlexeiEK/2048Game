@@ -6,14 +6,14 @@ namespace _2048WinFormsApp
     {
         private static string pathFile = "usersResults.json";
 
-        public static void Append(User user)
+        public static void Append(User newUser)
         {
-            var usersResults = GetUsersResults();
-            usersResults.Add(user);
-            Save(usersResults);
+            var users = GetAll();
+            users.Add(newUser);
+            Save(users);
         }
 
-        public static List<User> GetUsersResults()
+        public static List<User> GetAll()
         {
             if (!FileProvider.Exists(pathFile))
             {
@@ -21,13 +21,12 @@ namespace _2048WinFormsApp
             }
 
             var jsonData = FileProvider.GetValue(pathFile);
-            var usersResults = JsonConvert.DeserializeObject<List<User>>(jsonData);
-            return usersResults;
+            return JsonConvert.DeserializeObject<List<User>>(jsonData);
         }
 
-        public static void Save(List<User> usersResults)
+        public static void Save(List<User> users)
         {
-            var jsonData = JsonConvert.SerializeObject(usersResults, Formatting.Indented);
+            var jsonData = JsonConvert.SerializeObject(users, Formatting.Indented);
             FileProvider.Replace(pathFile, jsonData);
         }
     }
