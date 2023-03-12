@@ -7,6 +7,11 @@ namespace _2048WinFormsApp
 {
     public partial class MainForm : Form
     {
+        private const int labelSize = 70;
+        private const int padding = 6;
+        private const int startX = 10;
+        private const int startY = 70;
+
         private Label[,] labelsMap;
         private int mapSize = 4;
         private static Random random = new Random();
@@ -14,10 +19,6 @@ namespace _2048WinFormsApp
         private int score = 0;
         private int hiScore = GetHiScore(pathFile);
         private User user = new User();
-        private const int labelSize = 70;
-        private const int padding = 6;
-        private const int startX = 10;
-        private const int startY = 70;
 
         public MainForm()
         {
