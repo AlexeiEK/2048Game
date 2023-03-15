@@ -160,7 +160,6 @@ namespace _2048WinFormsApp
             {
                 KeyProcessingDown();
             }
-            GenerateNumber();
             ShowScore();
 
             if (Win())
@@ -183,6 +182,7 @@ namespace _2048WinFormsApp
         }
         private void KeyProcessingDown()
         {
+            var flag = false;
             for (int j = 0; j < mapSize; j++)
             {
                 for (int i = mapSize - 1; i >= 0; i--)
@@ -222,17 +222,23 @@ namespace _2048WinFormsApp
                             {
                                 labelsMap[i, j].Text = labelsMap[k, j].Text;
                                 labelsMap[k, j].Text = string.Empty;
+                                flag = true;
                                 break;
                             }
 
                         }
                     }
                 }
+            }
+            if (flag)
+            {
+                GenerateNumber();
             }
         }
 
         private void KeyProcessingUp()
         {
+            var flag = false;
             for (int j = 0; j < mapSize; j++)
             {
                 for (int i = 0; i < mapSize; i++)
@@ -271,17 +277,23 @@ namespace _2048WinFormsApp
                             {
                                 labelsMap[i, j].Text = labelsMap[k, j].Text;
                                 labelsMap[k, j].Text = string.Empty;
+                                flag = true;
                                 break;
                             }
 
                         }
                     }
                 }
+            }
+            if (flag)
+            {
+                GenerateNumber();
             }
         }
 
         private void KeyProcessingLeft()
         {
+            var flag = false;
             for (int i = 0; i < mapSize; i++)
             {
                 for (int j = 0; j < mapSize; j++)
@@ -321,17 +333,23 @@ namespace _2048WinFormsApp
                             {
                                 labelsMap[i, j].Text = labelsMap[i, k].Text;
                                 labelsMap[i, k].Text = string.Empty;
+                                flag = true;
                                 break;
                             }
 
                         }
                     }
                 }
+            }
+            if (flag)
+            {
+                GenerateNumber();
             }
         }
 
         private void KeyProcessingRight()
         {
+            var flag = false;
             for (int i = 0; i < mapSize; i++)
             {
                 for (int j = mapSize - 1; j >= 0; j--)
@@ -370,12 +388,17 @@ namespace _2048WinFormsApp
                             {
                                 labelsMap[i, j].Text = labelsMap[i, k].Text;
                                 labelsMap[i, k].Text = string.Empty;
+                                flag = true;
                                 break;
                             }
 
                         }
                     }
                 }
+            }
+            if (flag)
+            {
+                GenerateNumber();
             }
         }
 
