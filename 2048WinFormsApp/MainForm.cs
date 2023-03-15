@@ -100,6 +100,7 @@ namespace _2048WinFormsApp
                     }
                     break;
                 }
+                break;
             }
         }
 
@@ -166,7 +167,8 @@ namespace _2048WinFormsApp
             {
                 user.AcceptScore(score);
                 UserStorage.Append(user);
-                MessageBox.Show("Поздравляю! Вы победили!");
+                var winGameForm = new WinGameForm();
+                winGameForm.ShowDialog();
                 return;
             }
 
@@ -174,7 +176,8 @@ namespace _2048WinFormsApp
             {
                 user.AcceptScore(score);
                 UserStorage.Append(user);
-                MessageBox.Show("Сожалею, но Вы проиграли!");
+                var endGameForm = new EndGameForm();
+                endGameForm.ShowDialog();
                 return;
             }
         }
@@ -440,7 +443,7 @@ namespace _2048WinFormsApp
         private void правилаИгрыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Используйте клавиши вверх/вниз/вправо/влево, чтобы переместить плитки! " +
-                "Когда совпадут две плитки с одинаковым xbckjv, они сольются в число в два раза больше номинала. " +
+                "Когда совпадут две плитки с одинаковым числом, они сольются в число в два раза больше номинала. " +
                 "Для победы необходимо собрать число 2048!" +
                 " Успехов в игре!");
         }
