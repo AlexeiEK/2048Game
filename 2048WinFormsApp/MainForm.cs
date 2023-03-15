@@ -34,6 +34,7 @@ namespace _2048WinFormsApp
             CalculateMapSize(greetingsForm.radioButtons);
             InitMap();
             GenerateNumber();
+            GenerateNumber();
             ShowScore();
         }
 
@@ -100,7 +101,6 @@ namespace _2048WinFormsApp
                     }
                     break;
                 }
-                break;
             }
         }
 
