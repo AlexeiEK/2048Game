@@ -1,7 +1,4 @@
-using Microsoft.VisualBasic.ApplicationServices;
 using Newtonsoft.Json;
-using System.Windows.Forms;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace _2048WinFormsApp
 {
